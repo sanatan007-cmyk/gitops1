@@ -17,14 +17,14 @@ jobs:
         run: echo "${{ '${{ secrets.GITHUB_TOKEN }}' }}" | docker login ghcr.io -u ${{ '${{ github.actor }}' }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ '${{ github.repository_owner }}' }}/${{ values.appname }}:${{ '${{ github.sha }}' }} .
+        run: docker build -t ghcr.io/${{ '${{ github.repository_owner }}' }}/gitops:${{ '${{ github.sha }}' }} .
 
       - name: Push image
-        run: docker push ghcr.io/${{ '${{ github.repository_owner }}' }}/${{ values.appname }}:${{ '${{ github.sha }}' }}
+        run: docker push ghcr.io/${{ '${{ github.repository_owner }}' }}/gitops:${{ '${{ github.sha }}' }}
 
       - name: Update manifest
         run: |
-          sed -i "s|image: .*|image: ghcr.io/${{ '${{ github.repository_owner }}' }}/${{ values.appname }}:${{ '${{ github.sha }}' }}|" deploy/deployment.yaml
+          sed -i "s|image: .*|image: ghcr.io/${{ '${{ github.repository_owner }}' }}/gitops:${{ '${{ github.sha }}' }}|" deploy/deployment.yaml
 
       - name: Commit manifest update
         run: |
