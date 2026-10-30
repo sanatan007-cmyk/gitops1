@@ -16,6 +16,6 @@ spec:
         - name: ghcr-secret
       containers:
         - name: gitops1
-          image: gitops1:latest
+          image: ghcr.io/sanatan007-cmyk/gitops1:7cc96fca07099e2a1cb970159746cb14464aef9c
           ports:
             - containerPort: 8080
