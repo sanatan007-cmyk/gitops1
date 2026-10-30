@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello from ${{values.appname}} Service!"
+    return "Hello from GitOps1 Service!"
 
 
 app.run(host="0.0.0.0", port=8080)
